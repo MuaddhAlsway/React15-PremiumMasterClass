@@ -67,11 +67,13 @@
     .chat-message-container{
       flex-grow: 1;
       margin-top: 20px;
-
+      overflow: scroll;
+      scrollbar-width: none;
       
     }
   </style>
   <body >
+    <!-- 3:32:15 -->
     <div class="js-container"></div>
     
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
@@ -138,8 +140,19 @@
       }
 
       function ChatMessages({ chatMessages }) {
+      const chatMessageRef =  React.useRef(null)
+
+
+        React.useEffect(()=>{
+       const containerElem = chatMessageRef.current
+       if(containerElem) {
+        containerElem.scrollTop = containerElem.scrollHeight;
+       }
+        }, [chatMessages]);
+
         return (
-          <div className='chat-message-container'>
+          <div className='chat-message-container'
+          ref={chatMessageRef}>
             {chatMessages.map((chatMessage) => (
               <ChatMessage
                 key={chatMessage.id}
