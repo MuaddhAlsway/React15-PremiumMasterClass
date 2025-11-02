@@ -4,73 +4,7 @@
     <title>Chatbot</title>
   </head>
   <style>
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0px;
-      padding: 0px;
-    }
-    .send-button {
-      background-color: rgb(25,135,84);
-      color: white;
-      padding: 12px 20px ;
-      border: none;
-      margin-left: 10px ;
-      border-radius: 10px;
-      font-size: 15px;
-      cursor: pointer;
-    }
-    
-    .chat-input{
-      padding: 12px 15px;
-      border-radius: 10px;
-      border-width: 1px;
-      font-size: 15px;
-      flex-grow: 1;
-   
-    }
-
-    .chat-input-contianer{
-      display:flex;
-      margin-bottom: 60px;
-
-    }
-    .app-container{
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-     
-    }
-    .chat-message-user{
-        display: flex;
-        justify-content: end;
-        align-items: start;
-    }
-     .chat-message-robort{
-        display: flex;
-        align-items: start;
-    }
-    .chat-message-text{
-      background-color:rgb(238, 238,238) ;
-      padding: 15px 20px;
-      border-radius: 10px;
-      margin-right: 10px;
-      margin-left: 10px;
-      margin-bottom: 20px;
-      max-width: 300px;
-    }
-    .chat-message-profile{
-      width: 45px;
-    }
-    .chat-message-container{
-      flex-grow: 1;
-      margin-top: 20px;
-      overflow: scroll;
-      scrollbar-width: none;
-      
-    }
+ 
   </style>
   <body >
     <!-- 3:32:15 -->
@@ -83,45 +17,7 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
     <script type="text/babel">
-      function ChatInput({ chatMessages, setChatMessage }) {
-        const [inputText, setInputText] = React.useState('');
-
-        function saveInputText(event) {
-          setInputText(event.target.value);
-        }
-
-        function sendMessage() {
-          if (inputText.trim() === '') return; // Prevent empty messages    
-
-          const newChatMessages = [
-            ...chatMessages,
-            { message: inputText, sender: 'user', id: crypto.randomUUID() }
-          ]
-          setChatMessage(newChatMessages);
-  setInputText(''); // Clear input after sending
-          const response = Chatbot.getResponse(inputText)
-         setChatMessage([
-            ...newChatMessages,
-            { message: response, sender: 'robot', id: crypto.randomUUID() }
-          ]);
-        
-        }
-
-        return (
-          <div className='chat-input-container'> 
-         
-            <input
-              placeholder="Send message to Chatbot"
-              size="30"
-              value={inputText}
-              onChange={saveInputText}
-              className='chat-input'
-            />
-            <button className='send-button' onClick={sendMessage}>Send</button>
-          </div>
-        );
-      }
-
+      
       function ChatMessage({ message, sender }) {
         return (
           <div className={
@@ -164,24 +60,7 @@
         );
       }
 
-      function App() {
-        const [chatMessages, setChatMessage] = React.useState([
-          { message: 'hello chatbot', sender: 'user', id: 'id1' },
-          { message: 'Hello! How can I help you?', sender: 'robot', id: 'id2' },
-          { message: 'Can you get me today’s date?', sender: 'user', id: 'id3' },
-          { message: 'Today is September 27', sender: 'robot', id: 'id4' }
-        ]);
-
-        return (
-          <div className='app-container'>
-            <ChatMessages chatMessages={chatMessages} />
-            <ChatInput
-              chatMessages={chatMessages}
-              setChatMessage={setChatMessage}
-            />
-          </div>
-        );
-      }
+     
 
       const container = document.querySelector('.js-container');
       ReactDOM.createRoot(container).render(<App />);
