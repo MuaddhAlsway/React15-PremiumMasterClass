@@ -1,18 +1,15 @@
-
-import { Routes , Route } from 'react-router'
-import './App.css'
-import HomePage from './pages/HomePage'
+import { Routes, Route } from 'react-router-dom'; // ✅ fixed
+import './App.css';
+import HomePage from './pages/HomePage'; // ✅ fix filename
+import CheckoutPage from './pages/Checkout'; // ✅ default import
 
 function App() {
-  
-
   return (
     <Routes>
-      <Route index element={<HomePage/>}/>
-      <Route path='/checkout' element={<div>Test checkout page</div>}/>
+      <Route index element={<HomePage />} />
+      <Route path="checkout" element={<CheckoutPage />} />
     </Routes>
-    
-  )
+  );
 }
 
-export default App
+export default App;
