@@ -1,4 +1,4 @@
-function tracking() {
+function Tracking() {
   return (
     <div>
          <div class="header">
@@ -73,4 +73,4 @@ function tracking() {
     </div>
   )
 }
-export default tracking
+export default Tracking
