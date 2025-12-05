@@ -1,13 +1,19 @@
 import Header from '../Components/Header'
-import {products} from '../../starting-ourCode/data/products'                                                      
+import { useEffect, useState } from 'react'
 import './HomePage.css'
 import axios from 'axios'
+
 function HomePage() {
 
-  axios.get('http://localhost:3000/api/products')
-  .then((response) => {
-      console.log(response.data);
-  })
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/products')
+      .then((response) => {
+        setProducts(response.data)
+      })
+  }, [])
+
   return (
     <>
       <title>Ecommerce Project</title>
@@ -18,6 +24,7 @@ function HomePage() {
           {products.map((product) => {
             return (
               <div key={product.id} className="product-container">
+
                 <div className="product-image-container">
                   <img
                     className="product-image"
@@ -26,21 +33,25 @@ function HomePage() {
                 </div>
 
                 <div className="product-name limit-text-to-2-lines">
-                 {product.name}
+                  {product.name}
                 </div>
 
                 <div className="product-rating-container">
-                  <img
-                    className="product-rating-stars"
-                    src={`images/ratings/rating-${product.rating.stars * 10}.png`}
-                  />
-                  <div className="product-rating-count link-primary">
-                   {product.rating.count}
-                  </div>
+                  {product.rating && (
+                    <>
+                      <img
+                        className="product-rating-stars"
+                        src={`images/ratings/rating-${product.rating.stars * 10}.png`}
+                      />
+                      <div className="product-rating-count link-primary">
+                        {product.rating.count}
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <div className="product-price">
-                 ${(product.priceCents / 100).toFixed(2)}
+                  ${(product.priceCents / 100).toFixed(2)}
                 </div>
 
                 <div className="product-quantity-container">
@@ -68,11 +79,10 @@ function HomePage() {
                 <button className="add-to-cart-button button-primary">
                   Add to Cart
                 </button>
+
               </div>
             )
           })}
-
-           
         </div>
       </div>
     </>
