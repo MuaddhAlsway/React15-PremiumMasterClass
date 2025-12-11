@@ -209,3 +209,33 @@
   margin-top: 20px;
   margin-bottom: 19px;
 }
+/* Empty cart message styling */
+.checkout-page .empty-cart-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: rgb(120, 120, 120);
+}
+
+.checkout-page .empty-cart-message p {
+  font-size: 18px;
+  margin: 0;
+}
+
+.checkout-page .empty-cart-message a {
+  color: rgb(25, 135, 84);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.checkout-page .empty-cart-message a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure grid layout is maintained even with empty content */
+.checkout-page .order-summary {
+  min-height: 200px;
+}
+
+.checkout-page .payment-summary {
+  min-height: 300px;
+}
