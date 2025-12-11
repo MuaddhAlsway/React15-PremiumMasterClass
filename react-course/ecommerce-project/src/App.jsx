@@ -10,13 +10,14 @@ function App() {
     const [cart, setCart] = useState([]);
 
 useEffect(() => {
-axios.get('/api/cart-items')
-    
-        .then((response) => {
-          setCart(response.data)
-        })  
-     
-})
+  axios.get('/api/cart-items?expand=product')
+    .then((response) => {
+      setCart(response.data)
+    })
+    .catch((error) => {
+      console.error('Error fetching cart:', error);
+    });
+}, [])
        
   return (
     <Routes>
