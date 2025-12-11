@@ -3,21 +3,15 @@ import { useEffect, useState } from 'react'
 import './HomePage.css'
 import axios from 'axios'
 
-function HomePage() {
+function HomePage({cart}) {
 
   const [products, setProducts] = useState([])
-  const [cart, setCart] = useState([]);
+
   useEffect(() => {
     axios.get('/api/products')
       .then((response) => {
         setProducts(response.data)
       })
-
-   axios.get('/api/cart-items')
-
-    .then((response) => {
-      setCart(response.data)
-    })  
   }, [])
 
   return (
@@ -47,7 +41,7 @@ function HomePage() {
                     <>
                       <img
                         className="product-rating-stars"
-                        src={`images/ratings/rating-${product.rating.stars * 10}.png`}
+                        src={`/images/ratings/rating-${product.rating.stars * 10}.png`}
                       />
                       <div className="product-rating-count link-primary">
                         {product.rating.count}
@@ -78,7 +72,7 @@ function HomePage() {
                 <div className="product-spacer"></div>
 
                 <div className="added-to-cart">
-                  <img src="images/icons/checkmark.png" />
+                  <img src="/images/icons/checkmark.png" />
                   Added
                 </div>
 
