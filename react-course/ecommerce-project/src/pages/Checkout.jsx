@@ -113,6 +113,8 @@ export function CheckoutPage({ cart }) {
 
   // Debug logging
   console.log('Cart:', cart);
+  console.log('Cart length:', cart.length);
+  console.log('Total items:', totals.totalItems);
   console.log('Delivery Options:', deliveryOptions);
   console.log('Selected Delivery Options:', selectedDeliveryOptions);
   console.log('Calculated Totals:', totals);
@@ -131,7 +133,7 @@ export function CheckoutPage({ cart }) {
               </a>
             </div>
             <div className="checkout-header-middle-section">
-              Checkout (Loading...)
+              Checkout ({cart.reduce((total, item) => total + (item.quantity || 0), 0)} {cart.reduce((total, item) => total + (item.quantity || 0), 0) === 1 ? 'item' : 'items'})
             </div>
             <div className="checkout-header-right-section">
               <img src="/images/icons/checkout-lock-icon.png" alt="Secure Checkout" />
@@ -160,7 +162,7 @@ export function CheckoutPage({ cart }) {
 
           <div className="checkout-header-middle-section">
             Checkout (<a className="return-to-home-link"
-              href="/">{cart.reduce((total, item) => total + (item.quantity || 0), 0)} items</a>)
+              href="/">{totals.totalItems} {totals.totalItems === 1 ? 'item' : 'items'}</a>)
           </div>
 
           <div className="checkout-header-right-section">

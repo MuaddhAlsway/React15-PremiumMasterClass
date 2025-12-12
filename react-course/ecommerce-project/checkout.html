@@ -30,7 +30,7 @@
 
         <div class="checkout-header-middle-section">
           Checkout (<a class="return-to-home-link"
-            href="/">3 items</a>)
+            href="/" id="checkout-items-count">3 items</a>)
         </div>
 
         <div class="checkout-header-right-section">
@@ -201,7 +201,7 @@
             </div>
 
             <div class="payment-summary-row">
-              <div>Items (3):</div>
+              <div>Items (<span id="payment-items-count">3</span>):</div>
               <div class="payment-summary-money">$42.75</div>
             </div>
 
@@ -231,5 +231,36 @@
         </div>
       </div>
     </div>
+    <script>
+      // Make checkout page dynamic by calculating actual cart items
+      function updateItemCount() {
+        // Get cart items from the page (count visible cart items)
+        const cartItems = document.querySelectorAll('.cart-item-container');
+        let totalItems = 0;
+        
+        // Count quantities from each cart item
+        cartItems.forEach(item => {
+          const quantityElement = item.querySelector('.quantity-label');
+          if (quantityElement) {
+            totalItems += parseInt(quantityElement.textContent) || 0;
+          }
+        });
+        
+        // Update header count
+        const headerCount = document.getElementById('checkout-items-count');
+        if (headerCount) {
+          headerCount.textContent = `${totalItems} items`;
+        }
+        
+        // Update payment summary count
+        const paymentCount = document.getElementById('payment-items-count');
+        if (paymentCount) {
+          paymentCount.textContent = totalItems;
+        }
+      }
+      
+      // Update count when page loads
+      document.addEventListener('DOMContentLoaded', updateItemCount);
+    </script>
   </body>
 </html>
