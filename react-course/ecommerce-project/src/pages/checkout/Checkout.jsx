@@ -38,17 +38,20 @@ export function CheckoutPage({ cart }) {
   };
 
   useEffect(() => {
-    axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-      .then((response) => {
+    const fetchDeliveryOptions = async () => {
+      try {
+        const response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
         setDeliveryOptions(response.data);
         setIsLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error fetching delivery options:', error);
         // Use generated options as fallback
         setDeliveryOptions(generateDeliveryOptions());
         setIsLoading(false);
-      });
+      }
+    };
+    
+    fetchDeliveryOptions();
   }, []);
 
   // Initialize selected delivery options with first option for each item
