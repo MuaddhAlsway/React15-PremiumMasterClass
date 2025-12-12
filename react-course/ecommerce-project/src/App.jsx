@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import HomePage from './pages/HomePage';
-import { CheckoutPage } from './pages/Checkout';
+import HomePage from "./pages/Home/HomePage";
+import { CheckoutPage } from './pages/checkout/Checkout';
 import Orders from './pages/Orders';
-import Tracking from './pages/Tracking';
+import Tracking from './pages/tracking';
 import { useState, useEffect} from 'react'
 import axios from "axios";
 
@@ -22,7 +22,7 @@ useEffect(() => {
   return (
     <Routes>
       <Route index element={<HomePage cart={cart} />} />
-      <Route path="checkout" element={<CheckoutPage  cart={cart} />} />
+      <Route path="checkout" element={<CheckoutPage cart={cart} />} />
       <Route path="orders" element={<Orders cart={cart} />} />
       <Route path="tracking" element={<Tracking />} />
     </Routes>
