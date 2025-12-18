@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import OrderSummary from './ordersummary';
 import CheckoutHeader from './checkoutHeader';
 import PaymentSummary from './paymentSummary';
-export function CheckoutPage({ cart }) {
+export function CheckoutPage({ cart, loadCart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [selectedDeliveryOptions, setSelectedDeliveryOptions] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -153,6 +153,7 @@ export function CheckoutPage({ cart }) {
             deliveryOptions={deliveryOptions}
             selectedDeliveryOptions={selectedDeliveryOptions}
             handleDeliveryOptionChange={handleDeliveryOptionChange}
+            loadCart={loadCart}
           />
 
           <PaymentSummary totals={totals} />

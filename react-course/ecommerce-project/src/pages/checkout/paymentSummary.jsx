@@ -1,6 +1,20 @@
 import { formatMoney } from '../../utils/money';
+import axios from 'axios';
+import { useNavigate } from 'react-router';
 
-function PaymentSummary({ totals }) {
+
+function PaymentSummary({ totals , loadCart}) {
+const navigate = useNavigate()
+  const createOrder = async () => {
+    try {
+      await axios.post('/api/orders')
+      await loadCart()
+      navigate('/orders')
+    } catch (error) {
+      console.error('Error creating order:', error)
+      // You might want to show an error message to the user here
+    }
+  }
   return (
     <div>
           <div className="payment-summary">
@@ -33,7 +47,7 @@ function PaymentSummary({ totals }) {
               <div className="payment-summary-money">{formatMoney(totals.orderTotal)}</div>
             </div>
 
-            <button className="place-order-button button-primary">
+            <button className="place-order-button button-primary" onClick={createOrder}>
               Place your order
             </button>
           </div>
