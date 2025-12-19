@@ -1,5 +1,10 @@
 # 🚀 React Course Projects by SuperSimpleDev
 
+[![Course](https://img.shields.io/badge/Course-Watch%20Now-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/@SuperSimpleDev)
+[![GitHub](https://img.shields.io/badge/GitHub-SuperSimpleDev-black?style=for-the-badge&logo=github)](https://github.com/SuperSimpleDev)
+[![Backend Tutorial](https://img.shields.io/badge/Backend-Tutorial-blue?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=TtPXvEcE11E)
+[![React Course](https://img.shields.io/badge/React-Full%20Course-green?style=for-the-badge&logo=react)](https://www.youtube.com/watch?v=TtPXvEcE11E)
+
 A comprehensive collection of modern React applications from the **SuperSimpleDev React Course**. These projects demonstrate full-stack development, UI/UX design, and real-world application patterns through hands-on learning experiences.
 
 > **Course Instructor:** [SuperSimpleDev](https://github.com/SuperSimpleDev)  
